@@ -20,6 +20,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     FileReader fileReader;
+    // Get sd card path
     String sdPath = Environment.getExternalStorageDirectory().getAbsolutePath();
     final String fileName = "/Lab6.txt";
     File file;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Check sd card exist
         if (isExternalStorageWritable())
             Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
         else
@@ -40,13 +42,13 @@ public class MainActivity extends AppCompatActivity {
         button4 = (Button) findViewById(R.id.button4);
         editText = (EditText) findViewById(R.id.txtData);
 
-
+        // When button clicked, write text in EditText at file(edittext의 문자열을 파일에 쓴다)
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 try {
                     file = new File(sdPath, fileName);
+                    // if file exist, delete file
                     if(file.exists())
                         file.delete();
                     FileWriter fileWriter = new FileWriter(file,true);
@@ -59,15 +61,19 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        // When button2 clicked, Clear EditText
         button2.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 editText.setText("");
             }
         });
+        // When button3 clicked Read text from stored file and set EditText
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String text = "";
                 file = new File(sdPath+fileName);
                 int data;
@@ -83,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 editText.setText(text);
             }
         });
+        // When button4 clicked, finish activity.
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    /*
+    * Check sd card method
+    * if sd card exist, return true. else false.
+     */
     public boolean isExternalStorageWritable(){
         String state = Environment.getExternalStorageState();
         if(Environment.MEDIA_MOUNTED.equals(state)){
