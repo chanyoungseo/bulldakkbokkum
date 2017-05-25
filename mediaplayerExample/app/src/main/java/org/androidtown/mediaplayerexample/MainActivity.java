@@ -11,10 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    static final String AUDIO_URL = "http://sites.google.com/site/ubiaccessmobile/sample_audio.amr";
     private MediaPlayer mediaPlayer;
     Context context;
-    private int playbackPosition = 0;
     LinearLayout layout, layout2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
         layout = (LinearLayout)findViewById(R.id.audio1);
         layout2 = (LinearLayout)findViewById(R.id.audio2);
         String tag =(String)layout.getTag();
-        int id_audio = getResources().getIdentifier(tag,"raw",getPackageName());
+        // set layout onClickListener
         /*layout.setOnClickListener(new View.OnClickListener() {
+            // Play music1 and change layout background color
             @Override
             public void onClick(View v) {
                 String tag =(String)layout.getTag();
@@ -40,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
                 mediaPlayer.start();
             }
         });
+        // set layout2 onClickListener
         layout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            // Play music2 and change layout2 background color
                 layout2.setBackgroundColor(Color.GRAY);
                 layout.setBackgroundColor(Color.WHITE);
                 if(mediaPlayer!=null)
@@ -55,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
     }
+    // Get onClick to xml
     public void play(View v)
     {
+        // get tag and if equal "music1", play music1 and change layout background color
         if(v.getTag().equals("music1"))
         {
             layout.setBackgroundColor(Color.GRAY);
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer = MediaPlayer.create(context,R.raw.music1);
             mediaPlayer.start();
         }
+        // get tag and if equal "music2", play music2 and change layout2 background color
         else if(v.getTag().equals("music2"))
         {
             layout2.setBackgroundColor(Color.GRAY);
@@ -80,28 +84,6 @@ public class MainActivity extends AppCompatActivity {
             }
             mediaPlayer = MediaPlayer.create(context,R.raw.music2);
             mediaPlayer.start();
-        }
-    }
-    private void playAudio(String url) throws Exception {
-        killMediaPlayer();
-
-        mediaPlayer=new MediaPlayer();
-        mediaPlayer.setDataSource(url);
-        mediaPlayer.prepare();
-        mediaPlayer.start();
-    }
-
-    protected void onDestroy(){
-        super.onDestroy();
-        killMediaPlayer();
-    }
-
-    private void killMediaPlayer(){
-        if(mediaPlayer!=null){
-            try{mediaPlayer.release();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
         }
     }
 }
