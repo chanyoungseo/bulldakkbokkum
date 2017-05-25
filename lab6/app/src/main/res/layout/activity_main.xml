@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.androidtown.myapplication.MainActivity">
+
+    <EditText
+        android:id="@+id/txtData"
+        android:layout_width="368dp"
+        android:layout_height="180dp"
+        android:layout_margin="10dp"
+        android:background="#55dddddd"
+        android:padding="10dp"
+        android:gravity="top"
+        android:hint=
+            "Enter some lines of data here..."
+        android:textSize="18sp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. WRITE SD FILE"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="190dp"
+        android:layout_below="@+id/txtData"
+        android:layout_alignStart="@+id/txtData" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. CLEAR SCREEN"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="238dp"
+        android:layout_below="@+id/button"
+        android:layout_alignStart="@+id/button" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. READ SD FILE"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="286dp"
+        android:layout_below="@+id/button2"
+        android:layout_alignStart="@+id/button2" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4. FINISH APP"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="334dp"
+        android:layout_below="@+id/button3"
+        android:layout_alignStart="@+id/button3" />
+
+
+</RelativeLayout>
